@@ -1,5 +1,7 @@
-http://localhost:8080/ping
+http://localhost:8080/user/art
 ###
-http://localhost:8080/broken
+http://localhost:8080/testing?name=Pasut&address=TheTrust
 ###
-http://localhost:8080/user/art/send
+curl -v -X GET http://localhost:8080/someDataFromReader
+###
+curl -kIL https://raw.githubusercontent.com/gin-gonic/logo/master/color.png
