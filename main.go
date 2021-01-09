@@ -7,7 +7,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-type Person struct {
+type person struct {
 	Name    string `form:"name"`
 	Address string `form:"address"`
 }
@@ -22,14 +22,14 @@ func author(u, p string) (string, string) {
 }
 
 func startPage(c *gin.Context) {
-	var person Person
-	if c.ShouldBindQuery(&person) == nil {
+	var data person
+	if c.ShouldBindQuery(&data) == nil {
 		log.Println("====== Only Bind By Query String ======")
-		log.Println(person.Name)
-		log.Println(person.Address)
+		log.Println(data.Name)
+		log.Println(data.Address)
 	}
-	c.String(200, "Your name is %s and your address is %s\n", person.Name, person.Address)
-	c.String(200, "Success")
+	c.String(200, "Your name is %s and your address is %s\n", data.Name, data.Address)
+	c.String(200, "Success!")
 }
 
 func main() {
