@@ -1,33 +1,25 @@
 package main
 
 import (
-	"net/http"
-
-	"github.com/gin-gonic/gin"
+	"fmt"
 )
 
+func author(u, p string) (string, string) {
+	if u == "admin" && p == "astimone" {
+		fmt.Println("Authorized!")
+		return u, p
+	} else {
+		fmt.Println("Credentials wrong!")
+		return u, p
+	}
+}
+
 func main() {
-	router := gin.Default()
-
-	// This handler will match /user/john but will not match /user/ or /user
-	router.GET("/user/:name", func(c *gin.Context) {
-		name := c.Param("name")
-		c.String(http.StatusOK, "Hello %s", name)
-	})
-
-	// However, this one will match /user/john/ and also /user/john/send
-	// If no other routers match /user/john, it will redirect to /user/john/
-	router.GET("/user/:name/:action", func(c *gin.Context) {
-		name := c.Param("name")
-		action := c.Param("action")
-		message := name + " is " + action
-		c.String(http.StatusOK, message)
-	})
-
-	// // For each matched request Context will hold the route definition
-	// router.POST("/user/:name/*action", func(c *gin.Context) {
-	// 	c.FullPath() == "/user/:name/*action" // true
-	// })
-
-	router.Run(":8080")
+	var username string
+	var pwd string
+	fmt.Printf("Please input your user name: ")
+	fmt.Scan(&username)
+	fmt.Printf("Please input your password: ")
+	fmt.Scan(&pwd)
+	author(username, pwd)
 }
