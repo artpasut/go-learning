@@ -8,10 +8,9 @@ func author(u, p string) (string, string) {
 	if u == "admin" && p == "astimone" {
 		fmt.Println("Authorized!")
 		return u, p
-	} else {
-		fmt.Println("Credentials wrong!")
-		return u, p
 	}
+	fmt.Println("Credentials wrong!")
+	return u, p
 }
 
 func main() {
