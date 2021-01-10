@@ -1,0 +1,27 @@
+package main
+
+import (
+	"fmt"
+)
+
+/**
+ * Auto-generated code below aims at helping you parse
+ * the standard input according to the problem statement.
+ **/
+
+func intComma(i int) string {
+	if i < 0 {
+		return "-" + intComma(-i)
+	}
+	if i < 1000 {
+		return fmt.Sprintf("%d", i)
+	}
+	return intComma(i/1000) + "," + fmt.Sprintf("%03d", i%1000)
+}
+
+func main() {
+	var n int
+	fmt.Print("input number: ")
+	fmt.Scan(&n)
+	fmt.Printf("your number turns to %s\n", intComma(n))
+}
